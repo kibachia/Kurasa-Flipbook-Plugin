@@ -1,0 +1,20 @@
+/*===========================================
+ * Common
+ *===========================================*/
+body,
+html {
+	margin:0;
+	padding:0;
+}
+body {
+	padding:50px;
+	background:#f1f1f1;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	text-align:center;
+}
+/*===========================================
+ * Media
+ *===========================================*/
+@media only screen and (max-width: 1024px) {
+}
