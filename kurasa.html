@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/kurasa.min.css">
+	<!-- /end css -->
+</head>
+<body>
+<p>This is just a simple example to show you how the plugin works with PDF</p>
+
+<!-- flipbook markup -->
+<div id="flipbook" style="height:750px;"></div>
+<!-- /end flipbook markup -->
+
+<!-- scripts-section -->
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/pdf.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.kurasa.min.js"></script>
+<script>
+$(document).ready(function() {
+	var options = {
+		responsive:true,
+		autoFit:true,
+		autoHeight: false,
+		
+		padding:{
+			top:20,
+			left:10,
+			right:10,
+			bottom:70
+		},
+		
+		pdfUrl: 'assets/pdf/Shujaaz.pdf',
+		pdfAutoCreatePages: true,
+		pdfBookSizeFromDocument: true,
+		
+		zoom:1,
+		
+		toolbarControls: [
+			{type:'share',        active:true},
+			{type:'sound',        active:true, optional: false},
+			{type:'outline',      active:true},
+			{type:'thumbnails',   active:true},
+			{type:'gotofirst',    active:true},
+			{type:'prev',         active:true},
+			{type:'pagenumber',   active:true},
+			{type:'next',         active:true},
+			{type:'gotolast',     active:true},
+			{type:'zoom-in',      active:true, optional: false},
+			{type:'zoom-out',     active:true, optional: false},
+			{type:'zoom-default', active:true, optional: false},
+			{type:'optional',     active:false},
+			{type:'download',     active:true, optional: false},
+			{type:'fullscreen',   active:true, optional: false},
+		],
+		
+		bookmarks: [
+
+			{text:'Front Cover', link:'1'},
+
+			{text:'Malkia', link:'', folded: false, bookmarks:[
+				{text:'#BforBae', link:'2'},
+				{text:'Watoto wa Cheezy Freshi', link:'4'},	
+			]},
+			{text:'Maria Kim', link:'10'},
+			{text:'Celeb', link:'16'},
+			{text:'Hustle Fiti', link:'18'},
+			{text:'My Story', link:'20'},
+			{text:'Okolea Bro', link:'22'},
+			{text:'Back Cover', link:'-1'},
+		],
+	};
+	
+	$('#flipbook').kurasa(options);
+	
+	// Events
+	$('#flipbook').on('kurasa:ready', function(e, plugin) {
+		console.log('event:ready');
+	});
+	
+	$('#flipbook').on('kurasa:showpage', function(e, plugin, page) {
+		console.log('event:showpage [' + page + ']');
+	});
+	
+	$('#flipbook').on('kurasa:hidepage', function(e, plugin, page) {
+		console.log('event:hidepage [' + page + ']');
+	});
+});
+</script>
+<!-- /end scripts-section -->
+</body>
+</html>
